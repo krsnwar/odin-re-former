@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <%# <form action="/users" method="post" accept-charset="utf-8"> %>
+    <%# <%= csrf_meta_tags %>
+    <%# <label for="username">Username:</label>
+      <input type="text" id="username" name="username">
+      <br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email">
+      <br>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password">
+      <br>
+      <br>
+      <input type="submit" value="Submit">
+    </form> %>
+
+    <%= form_with model: @user do |form| %>
+      <div>
+        <%= form.label :username %><br>
+        <%= form.text_field :username %>
+        <% @user.errors.full_messages_for(:username).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <br>
+      <div>
+        <%= form.label :email %><br>
+        <%= form.text_field :email %>
+        <% @user.errors.full_messages_for(:email).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <br>
+      <div>
+        <%= form.label :password %><br>
+        <%= form.password_field :password %>
+        <% @user.errors.full_messages_for(:password).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+      <br>
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+
+  </body>
+</html>
